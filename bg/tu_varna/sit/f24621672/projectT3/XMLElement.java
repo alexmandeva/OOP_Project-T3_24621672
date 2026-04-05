@@ -6,16 +6,22 @@ import java.util.List;
 import java.util.Map;
 
 public class XMLElement {
+    private String name;
     private String id;
     private Map<String,String> attributes;
     private List<XMLElement> children;
     private String text;
 
     public XMLElement() {
+        this.name = name;
         this.id = id;
         this.attributes = new HashMap<>();
         this.children = new ArrayList<>();
         this.text = "";
+    }
+
+    public String getName() {
+        return name;
     }
 
     public String getId() {
