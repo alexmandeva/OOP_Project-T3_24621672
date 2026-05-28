@@ -7,7 +7,7 @@ import bg.tu_varna.sit.f24621672.projectT3.core.XmlSerializer;
 import java.io.File;
 
 /**
- * Saves document to another file.
+ * Команда за записване на XML документа в нов файл, посочен от потребителя.
  */
 public class SaveAsCommand extends AbstractCommand {
 

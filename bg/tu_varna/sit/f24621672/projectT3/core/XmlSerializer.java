@@ -32,6 +32,14 @@ public class XmlSerializer {
         }
     }
 
+    /**
+     * Рекурсивно сериализира елемент и неговите наследници в XML низ с отстъпи.
+     * Елементи без деца и без текст се записват в самозатварящ формат.
+     *
+     * @param element елементът за сериализиране
+     * @param indent текущото ниво на отстъп (брой двойни интервали)
+     * @return форматираният XML низ
+     */
     private String serialize(XmlElement element, int indent) {
 
         StringBuilder sb = new StringBuilder();

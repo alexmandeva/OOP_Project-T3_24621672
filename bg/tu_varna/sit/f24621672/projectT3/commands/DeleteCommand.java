@@ -9,7 +9,14 @@ import bg.tu_varna.sit.f24621672.projectT3.cli.CommandContext;
  * delete <id> <key>
  */
 public class DeleteCommand extends AbstractCommand {
-
+    /**
+     * Изпълнява операцията по премахване на атрибут.
+     * Проверява съществуването на елемента и изтрива атрибута, съвпадащ по ключ.
+     *
+     * @param context текущият контекст на приложението
+     * @param args    аргументи на командата: [0] - ID на елемента, [1] - ключ на атрибута
+     * @return съобщение за успешно изтриване на атрибута
+     */
     @Override
     public String execute(CommandContext context, String[] args) {
 

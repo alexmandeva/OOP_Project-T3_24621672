@@ -26,7 +26,13 @@ public class XmlParser {
         List<String> tokens = tokenize(content);
         return buildTree(tokens, new IdGenerator());
     }
-
+    /**
+     * Чете целия XML файл и го връща като един низ.
+     *
+     * @param file файлът за четене
+     * @return съдържанието на файла като {@link String}
+     * @throws ParseException при I/O грешка
+     */
     private String readFile(File file) {
         StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new FileReader(file))) {
@@ -71,7 +77,15 @@ public class XmlParser {
         }
         return tokens;
     }
-
+    /**
+     * Строи XML дървото от списъка с токени чрез стек.
+     * При отварящ таг елементът се поставя в стека; при затварящ се изважда
+     * и се добавя като наследник. Накрая поправя дублираните ID-та.
+     *
+     * @param tokens токените от {@code tokenize()}
+     * @param idGen генераторът на идентификатори
+     * @return построеният {@link XmlDocument}
+     */
     private XmlDocument buildTree(List<String> tokens, IdGenerator idGen) {
         XmlDocument doc = new XmlDocument();
         Deque<XmlElement> stack = new ArrayDeque<>();
@@ -114,7 +128,12 @@ public class XmlParser {
         return doc;
     }
 
-
+    /**
+     * Парсира отварящ таг и създава {@link XmlElement} с атрибути и уникален ID.
+     * @param inner съдържанието на тага без ъгловите скоби
+     * @param idGen генераторът на идентификатори
+     * @return новосъздаденият елемент
+     */
     private XmlElement parseOpeningTag(String inner, IdGenerator idGen) {
         int spaceIdx = inner.indexOf(' ');
         String tagName = (spaceIdx == -1) ? inner : inner.substring(0, spaceIdx);
@@ -156,12 +175,24 @@ public class XmlParser {
             i = q2 + 1;
         }
     }
-
+    /**
+     * Стартира рекурсивното поправяне на дублираните ID-та от корена.
+     *
+     * @param root  коренът на дървото
+     * @param idGen генераторът, чийто речник съдържа информацията за дублиране
+     */
     private void patchDuplicates(XmlElement root, IdGenerator idGen) {
         if (root == null) return;
         patchRecursive(root, idGen);
     }
 
+    /**
+     * Рекурсивно обхожда дървото и добавя суфикс на всеки елемент,
+     * чийто базов ID е бил срещнат повече от веднъж по време на парсирането.
+     *
+     * @param el текущият елемент за обработка
+     * @param idGen генераторът с информация за дублиранията
+     */
     private void patchRecursive(XmlElement el, IdGenerator idGen) {
         if (el == null) return;
         String id = el.getId();

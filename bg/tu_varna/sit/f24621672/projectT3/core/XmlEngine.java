@@ -15,13 +15,6 @@ public class XmlEngine {
     private String currentFile;
     private int newChildCounter = 0;
 
-    /**
-     * Opens and parses the file, or creates an empty document if it does not
-     * exist yet.
-     *
-     * @param file file to open
-     * @return the populated document
-     */
     public XmlDocument open(File file) {
         if (!file.exists()) {
             document = new XmlDocument();
@@ -31,7 +24,9 @@ public class XmlEngine {
         currentFile = file.getAbsolutePath();
         return document;
     }
-
+    /**
+     * Затваря текущо заредения документ и освобождава паметта.
+     */
     public void close() {
         this.document = null;
         this.currentFile = null;

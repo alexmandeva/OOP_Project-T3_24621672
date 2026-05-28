@@ -13,7 +13,14 @@ import java.io.IOException;
  * Синтаксис: {@code open <path>}
  */
 public class OpenCommand extends AbstractCommand {
-
+    /**
+     * Отваря XML файла, парсира го и зарежда дървото в паметта.
+     * Ако файлът не съществува, той се създава автоматично като нов празен файл.
+     *
+     * @param context текущият контекст на приложението
+     * @param args    аргументи на командата: [0] - пътят до XML файла
+     * @return потвърдително съобщение за успешно отваряне на файла
+     */
     @Override
     public String execute(CommandContext context, String[] args) {
 
