@@ -2,8 +2,7 @@ package bg.tu_varna.sit.f24621672.projectT3.commands;
 
 import bg.tu_varna.sit.f24621672.projectT3.cli.AbstractCommand;
 import bg.tu_varna.sit.f24621672.projectT3.cli.CommandContext;
-import bg.tu_varna.sit.f24621672.projectT3.core.XmlAttribute;
-import bg.tu_varna.sit.f24621672.projectT3.core.XmlElement;
+
 /**
  * Selects attribute value.
  */

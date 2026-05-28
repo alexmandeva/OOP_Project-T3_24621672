@@ -53,8 +53,8 @@ public class XmlParser {
                 if (end == -1) throw new ParseException("Unclosed '<' at position " + i);
                 String tag = content.substring(i, end + 1);
 
-                if (tag.startsWith("<?")) { i = end + 1; continue; }       // declaration
-                if (tag.startsWith("<!--")) {                               // comment
+                if (tag.startsWith("<?")) { i = end + 1; continue; }
+                if (tag.startsWith("<!--")) {
                     int commentEnd = content.indexOf("-->", i);
                     i = (commentEnd == -1) ? len : commentEnd + 3;
                     continue;
@@ -85,7 +85,6 @@ public class XmlParser {
                 }
 
             } else if (token.startsWith("<")) {
-                // Opening or self-closing tag
                 boolean selfClosing = token.endsWith("/>");
                 String inner = selfClosing
                         ? token.substring(1, token.length() - 2).trim()
@@ -101,7 +100,6 @@ public class XmlParser {
                 }
 
             } else {
-                // Text node
                 if (!stack.isEmpty()) {
                     stack.peek().setText(token);
                 }

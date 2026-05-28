@@ -13,7 +13,7 @@ public class ChildrenCommand extends AbstractCommand {
      * Изисква отворен документ и валидно подадено ID.
      *
      * @param context текущият контекст на приложението
-     * @param args    аргументи на командата: [0] - ID на целевия елемент
+     * @param args аргументи на командата: [0] - ID на целевия елемент
      * @return текстово описание на списъка с деца и техните индекси
      */
     @Override

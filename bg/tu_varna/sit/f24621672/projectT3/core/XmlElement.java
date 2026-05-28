@@ -71,7 +71,7 @@ public class XmlElement {
     /**
      * Sets an existing attribute's value, or adds it if not present.
      *
-     * @param key   attribute name
+     * @param key  attribute name
      * @param value new value
      */
     public void setAttribute(String key, String value) {
